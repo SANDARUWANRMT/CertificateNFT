@@ -1,58 +1,63 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
-// Import necessary contracts from OpenZeppelin
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 
-// Define the NFT contract
-contract CertificateNFT is ERC721URIStorage, Ownable {
-    // Mapping to store UID (unique identifier) for each NFT token ID
-    mapping(uint256 => string) private uidMappings;
+contract CertificateNFT is ERC721, ERC721URIStorage, ERC721Pausable, Ownable, ERC721Burnable {
+    constructor(address initialOwner)
+        ERC721("CertificateNFT", "CNFT")
+        Ownable(initialOwner)
+    {}
 
-    // Constructor to initialize the contract with a name and symbol
-    constructor() ERC721("CertificateNFT", "CNFT") {}
-
-    // Mint NFT function that can only be called by the contract owner
-    function mintNFT(address _to, uint256 _tokenId, string memory _tokenURI, string memory _uid) public onlyOwner {
-        // Mint the NFT and set its token URI
-        _mint(_to, _tokenId);
-        _setTokenURI(_tokenId, _tokenURI);
-        
-        // Store the UID for the NFT token ID
-        uidMappings[_tokenId] = _uid;
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://scarlet-given-crane-294.mypinata.cloud/ipfs/";
     }
 
-    // Transfer NFT function
-    function transferNFT(address _to, uint256 _tokenId) public {
-        // Check if the caller is the owner or approved to transfer the NFT
-        require(_isApprovedOrOwner(msg.sender, _tokenId), "Not approved or owner");
-        
-        // Transfer the NFT to the new address
-        _transfer(msg.sender, _to, _tokenId);
+    function pause() public onlyOwner {
+        _pause();
     }
 
-    // Save UID function
-    function saveUID(uint256 _tokenId, string memory _uid) public {
-        // Check if the caller is the owner or approved to modify the UID
-        require(_isApprovedOrOwner(msg.sender, _tokenId), "Not approved or owner");
-        
-        // Store the new UID for the NFT token ID
-        uidMappings[_tokenId] = _uid;
+    function unpause() public onlyOwner {
+        _unpause();
     }
 
-    // Get UID function
-    function getUID(uint256 _tokenId) public view returns (string memory) {
-        // Retrieve and return the stored UID for the given token ID
-        return uidMappings[_tokenId];
+    function safeMint(address to, uint256 tokenId, string memory uri)
+        public
+        onlyOwner
+    {
+        _safeMint(to, tokenId);
+        _setTokenURI(tokenId, uri);
     }
 
-    // Update UID function
-    function updateUID(uint256 _tokenId, string memory _newUID) public {
-        // Check if the caller is the owner or approved to modify the UID
-        require(_isApprovedOrOwner(msg.sender, _tokenId), "Not approved or owner");
-        
-        // Update the stored UID for the NFT token ID
-        uidMappings[_tokenId] = _newUID;
+    // The following functions are overrides required by Solidity.
+
+    function _update(address to, uint256 tokenId, address auth)
+        internal
+        override(ERC721, ERC721Pausable)
+        returns (address)
+    {
+        return super._update(to, tokenId, auth);
+    }
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }
