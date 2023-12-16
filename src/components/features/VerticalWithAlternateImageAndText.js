@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import Number_1 from "../../images/Number_921x921px-1.png"
-import Number_2 from "../../images/Number_921x921px-2.png"
-import Number_3 from "../../images/Number_921x921px-3.png"
-import Number_4 from "../../images/Number_921x921px-4.png"
+import Number_1 from "../../images/Number_921x921px-1.png";
+import Number_2 from "../../images/Number_921x921px-2.png";
+import Number_3 from "../../images/Number_921x921px-3.png";
+import Number_4 from "../../images/Number_921x921px-4.png";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
 
@@ -17,14 +17,14 @@ const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w
 
 const Content = tw.div`mt-16`;
 
-const Card = styled.div(props => [
+const Card = styled.div((props) => [
   tw`mt-24 md:flex justify-center items-center flex-row`,
 ]);
-const Image = styled.div(props => [
+const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   `width: 15%;`,
   `height: 100px;`,
-  tw`rounded flex-shrink-0 h-80 bg-contain bg-center bg-no-repeat mx-4 sm:mx-8 md:mx-4 lg:mx-8`
+  tw`rounded flex-shrink-0 h-80 bg-contain bg-center bg-no-repeat mx-4 sm:mx-8 md:mx-4 lg:mx-8`,
 ]);
 const Details = tw.div`mt-4 md:mt-0 md:max-w-md mx-4 sm:mx-8 md:mx-4 lg:mx-8`;
 const Subtitle = tw.div`font-bold tracking-wide text-secondary-100`;
@@ -48,41 +48,32 @@ const SvgDotPattern4 = tw(
 export default () => {
   const cards = [
     {
-      imageSrc:
-      Number_1,
-      
+      imageSrc: Number_1,
+
       title: "Sign Up",
-      description:
-        "Here is for Sign Up",
-      url: "http://localhost:3000/register"
+      description: "Here is for Sign Up",
+      url: "http://localhost:3000/register",
     },
 
-
     {
-      imageSrc:
-        Number_2,
+      imageSrc: Number_2,
       title: "Enter Details",
-      description:
-        "Here is for Sign Up",
-      url: "http://localhost:3000/register"
+      description: "Here is for Sign Up",
+      url: "http://localhost:3000/register",
     },
 
     {
-      imageSrc:
-        Number_3,
+      imageSrc: Number_3,
       title: "Finish",
-      description:
-        "Here is for Sign Up",
-      url: "http://localhost:3000/register"
+      description: "Here is for Sign Up",
+      url: "http://localhost:3000/register",
     },
-    
+
     {
-      imageSrc:
-        Number_4,
+      imageSrc: Number_4,
       title: "Set Up",
-      description:
-        "Here is for Sign Up",
-      url: "http://localhost:3000/register"
+      description: "Here is for Sign Up",
+      url: "http://localhost:3000/register",
     },
   ];
 
@@ -91,9 +82,7 @@ export default () => {
       <SingleColumn>
         <HeadingInfoContainer>
           <HeadingTitle>How It Works</HeadingTitle>
-
         </HeadingInfoContainer>
-
         <Content>
           {cards.map((card, i) => (
             <Card key={i} reversed={i % 2 === 1}>
@@ -108,10 +97,10 @@ export default () => {
           ))}
         </Content>
       </SingleColumn>
-      {/* <SvgDotPattern1 />
+      <SvgDotPattern1 />
       <SvgDotPattern2 />
       <SvgDotPattern3 />
-      <SvgDotPattern4 /> */}
+      <SvgDotPattern4 />
     </Container>
   );
 };

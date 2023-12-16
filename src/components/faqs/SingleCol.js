@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
@@ -27,7 +30,9 @@ const QuestionToggleIcon = motion(styled.span`
     ${tw`w-6 h-6`}
   }
 `);
-const Answer = motion(tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`);
+const Answer = motion(
+  tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed`
+);
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-56 w-56 opacity-15 transform translate-x-2/3 -translate-y-12 text-teal-400`}
@@ -36,38 +41,36 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-
-
 export default ({
   subheading = "FAQS",
   heading = "You have Questions ?",
   description = "And we have got answers to all of them. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   faqs = [
     {
-      question: "Is lunch provided free of cost ?",
+      question: "What is blockchain?",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "Blockchain is a digital ledger technology that securely records and verifies transactions across a decentralized network of computers. It consists of a chain of blocks, where each block contains a list of transactions. The decentralized nature of blockchain ensures transparency, security, and immutability of the recorded data.",
     },
     {
-      question: "Do you have 2 Bedroom suites ?",
+      question: "How does blockchain ensure security?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "Blockchain ensures security through cryptographic techniques and decentralization. Each block in the chain is linked to the previous one through a unique identifier, and the information within each block is encrypted. The decentralized network means that no single entity has control over the entire system, reducing the risk of tampering or fraud.",
     },
     {
-      question: "Are Wi-Fi costs included in the price ?",
+      question: "What is a smart contract?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "A smart contract is a self-executing contract with the terms of the agreement directly written into code. It automatically executes and enforces the terms when predefined conditions are met. Smart contracts run on blockchain platforms, providing transparency, trust, and automation to various processes, such as financial transactions and agreements.",
     },
     {
-      question: "Where can I reach you for support ?",
+      question: "Can anyone access the information on a blockchain?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    }
-  ]
+        "While blockchain promotes transparency, access to information depends on the type of blockchain. Public blockchains are open to anyone, allowing transparent access to the entire transaction history. Private blockchains, on the other hand, restrict access to a specific group of participants, ensuring privacy and control over sensitive data.",
+    },
+  ],
 }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
-  const toggleQuestion = questionIndex => {
+  const toggleQuestion = (questionIndex) => {
     if (activeQuestionIndex === questionIndex) setActiveQuestionIndex(null);
     else setActiveQuestionIndex(questionIndex);
   };
@@ -95,11 +98,16 @@ export default ({
                   <QuestionToggleIcon
                     variants={{
                       collapsed: { rotate: 0 },
-                      open: { rotate: -180 }
+                      open: { rotate: -180 },
                     }}
                     initial="collapsed"
-                    animate={activeQuestionIndex === index ? "open" : "collapsed"}
-                    transition={{ duration: 0.02, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    animate={
+                      activeQuestionIndex === index ? "open" : "collapsed"
+                    }
+                    transition={{
+                      duration: 0.02,
+                      ease: [0.04, 0.62, 0.23, 0.98],
+                    }}
                   >
                     <ChevronDownIcon />
                   </QuestionToggleIcon>
@@ -107,7 +115,7 @@ export default ({
                 <Answer
                   variants={{
                     open: { opacity: 1, height: "auto", marginTop: "16px" },
-                    collapsed: { opacity: 0, height: 0, marginTop: "0px" }
+                    collapsed: { opacity: 0, height: 0, marginTop: "0px" },
                   }}
                   initial="collapsed"
                   animate={activeQuestionIndex === index ? "open" : "collapsed"}
@@ -120,7 +128,7 @@ export default ({
           </FAQSContainer>
         </Column>
       </ContentWithPaddingXl>
-      <DecoratorBlob1/>
+      <DecoratorBlob1 />
       <DecoratorBlob2 />
     </Container>
   );

@@ -1,10 +1,14 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import homeImg from "../../images/home_img.png"
+import homeImg from "../../images/home_img.png";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import Header, { LogoLink, NavLinks, NavLink as NavLinkBase } from "../headers/light.js";
+import Header, {
+  LogoLink,
+  NavLinks,
+  NavLink as NavLinkBase,
+} from "../headers/light.js";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -42,14 +46,14 @@ const Actions = styled.div`
   }
 `;
 
-export default    ({
+export default ({
   navLinks = [
     <NavLinks key={1}>
       <NavLink href="#home">Home</NavLink>
       <NavLink href="#features">Courses</NavLink>
       <NavLink href="#howitworks">How it works</NavLink>
       <NavLink href="#aboutus">About us</NavLink>
-    </NavLinks>
+    </NavLinks>,
   ],
   heading = (
     <>
@@ -63,7 +67,7 @@ export default    ({
   primaryActionUrl = "/register",
   primaryActionText = "Register",
   secondaryActionUrl = "/login",
-  secondaryActionText = "LogIn"
+  secondaryActionText = "LogIn",
 }) => {
   return (
     <Container>
