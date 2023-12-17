@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "pages/Login";
 import Signup from "pages/Signup";
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
+
 import Course from "pages/Course";
+import Courses from "pages/Courses";
+import Tutors from "pages/Tutors";
 
 export default function App() {
   return (
@@ -20,8 +22,10 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
-          <Route path="/about" element={<AboutUs />} />
+          {/* <Route path="/about" element={<AboutUs />} /> */}
           <Route path="/course" element={<Course />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/tutors" element={<Tutors />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

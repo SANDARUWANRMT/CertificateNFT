@@ -29,7 +29,7 @@ const Column = tw.div`mt-12 lg:w-1/2 items-center h-full w-1/2 rounded-lg flex m
 const Video = tw.video`h-full rounded-lg`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
-const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
+const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-3xl`;
 
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1
@@ -49,7 +49,8 @@ export default ({
   const navLinks = [
     <NavLinks key={1}>
       <NavLink href="/#home">Home</NavLink>
-      <NavLink href="/#features">Courses</NavLink>
+      <NavLink href="/courses">Courses</NavLink>
+      <NavLink href="/tutors">Tutors</NavLink>
       <NavLink href="/#howitworks">How it works</NavLink>
       <NavLink href="/#aboutus">About us</NavLink>
     </NavLinks>,

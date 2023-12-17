@@ -43,7 +43,7 @@ export default () => {
           </div>
           <LinksContainer>
             <Link href="#">Home</Link>
-            <Link href="/about">About</Link>
+            {/* <Link href="/about">About</Link> */}
             <Link href="#">Contact Us</Link>
             {/* <Link href="#">Blog</Link>
             <Link href="#">Reviews</Link> */}

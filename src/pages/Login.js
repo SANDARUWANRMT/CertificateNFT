@@ -107,10 +107,12 @@ export default ({
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
+                <a href="/courses">
+                  <SubmitButton type="button">
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{submitButtonText}</span>
+                  </SubmitButton>
+                </a>
               </Form>
               <p tw="mt-6 text-xs text-gray-600 text-center">
                 <a

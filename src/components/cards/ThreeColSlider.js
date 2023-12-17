@@ -37,6 +37,13 @@ const CardImage = styled.div((props) => [
   tw` h-64 w-96 bg-cover bg-center rounded sm:rounded-lg`,
 ]);
 
+const Button = styled.button`
+  ${tw`mt-5 tracking-wide font-semibold bg-teal-500 text-gray-100 w-48 py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+  .text {
+    ${tw`ml-3`}
+  }
+`;
+
 const TextInfo = tw.div`py-6 sm:px-10 sm:py-6`;
 const TitleReviewContainer = tw.div`flex flex-col sm:flex-row sm:justify-between sm:items-center`;
 const Title = tw.h5`text-2xl font-bold`;
@@ -178,6 +185,11 @@ export default () => {
             </a>
           ))}
         </CardSlider>
+        <a href="/courses">
+          <Button type="button" className="mx-auto d-flex">
+            <span className="text">Explore More</span>
+          </Button>
+        </a>
       </Content>
     </Container>
   );

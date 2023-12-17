@@ -71,10 +71,11 @@ export default ({
       url: "https://twitter.com"
     }*/
   ],
-  submitButtonText = "Sign Up",
+  submitButtonText = "Sign Up as Teacher",
+  submitButtonText2 = "Sign Up as Student",
   SubmitButtonIcon = SignUpIcon,
-  tosUrl = "#",
-  privacyPolicyUrl = "#",
+  tosUrl = "/",
+  privacyPolicyUrl = "/",
   signInUrl = "/login",
 }) => (
   <AnimationRevealPage>
@@ -107,10 +108,18 @@ export default ({
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
+                <a href="/courses">
+                  <SubmitButton type="button">
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{submitButtonText}</span>
+                  </SubmitButton>
+                </a>
+                <a href="/courses">
+                  <SubmitButton type="button">
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{submitButtonText2}</span>
+                  </SubmitButton>
+                </a>
                 <p tw="mt-6 text-xs text-gray-600 text-center">
                   I agree to abide by treact's{" "}
                   <a href={tosUrl} tw="border-b border-gray-500 border-dotted">
@@ -127,9 +136,12 @@ export default ({
 
                 <p tw="mt-8 text-sm text-gray-600 text-center">
                   Already have an account?{" "}
-                  <a href={signInUrl} tw="border-b border-gray-500 border-dotted">
-                  Sign Up
-                </a>
+                  <a
+                    href={signInUrl}
+                    tw="border-b border-gray-500 border-dotted"
+                  >
+                    Login
+                  </a>
                 </p>
               </Form>
             </FormContainer>
