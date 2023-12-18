@@ -13,18 +13,22 @@ contract CertificateNFT is ERC721, ERC721URIStorage, ERC721Pausable, Ownable, ER
         Ownable(initialOwner)
     {}
 
+    // Define the base URI for metadata
     function _baseURI() internal pure override returns (string memory) {
         return "https://scarlet-given-crane-294.mypinata.cloud/ipfs/";
     }
 
+    // Pause contract functionality
     function pause() public onlyOwner {
         _pause();
     }
 
+    // Unpause contract functionality
     function unpause() public onlyOwner {
         _unpause();
     }
 
+    // Mint a new NFT with specified URI to the specified address
     function safeMint(address to, uint256 tokenId, string memory uri)
         public
         onlyOwner
@@ -35,6 +39,7 @@ contract CertificateNFT is ERC721, ERC721URIStorage, ERC721Pausable, Ownable, ER
 
     // The following functions are overrides required by Solidity.
 
+    // Update function override for ERC721Pausable
     function _update(address to, uint256 tokenId, address auth)
         internal
         override(ERC721, ERC721Pausable)
@@ -43,6 +48,7 @@ contract CertificateNFT is ERC721, ERC721URIStorage, ERC721Pausable, Ownable, ER
         return super._update(to, tokenId, auth);
     }
 
+    // Token URI function override for ERC721URIStorage
     function tokenURI(uint256 tokenId)
         public
         view
@@ -52,6 +58,7 @@ contract CertificateNFT is ERC721, ERC721URIStorage, ERC721Pausable, Ownable, ER
         return super.tokenURI(tokenId);
     }
 
+    // SupportsInterface function override for ERC721URIStorage
     function supportsInterface(bytes4 interfaceId)
         public
         view
