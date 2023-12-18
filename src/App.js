@@ -6,9 +6,12 @@ import Login from "pages/Login";
 import Signup from "pages/Signup";
 import Home from "./pages/Home";
 
+
 import Course from "pages/Course";
 import Courses from "pages/Courses";
 import Tutors from "pages/Tutors";
+import ClaimCerticate from "pages/ClaimCerticate";
+
 
 export default function App() {
   return (
@@ -27,6 +30,7 @@ export default function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/tutors" element={<Tutors />} />
           <Route path="/" element={<Home />} />
+          <Route path="/ClaimCertificate" element={<ClaimCerticate/>} />
         </Routes>
       </Router>
     </>

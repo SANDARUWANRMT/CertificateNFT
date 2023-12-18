@@ -12,6 +12,7 @@ import Header, {
   NavLink as NavLinkBase,
 } from "../components/headers/light.js";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -79,6 +80,23 @@ export default ({
         <DecoratorBlob1 />
         <DecoratorBlob2 />
       </Container>
+      <Link to="/ClaimCertificate"><div className="buttoncontainer"  style={{
+        display:'flex',
+        marginBottom:"100px"
+      }}>
+      <button style={{
+             padding: '10px',
+             backgroundColor: 'rgb(82, 82, 212)', 
+             color: '#fff',
+             border: 'none',
+             cursor: 'pointer',
+             borderRadius: '4px',
+             margin:"0 auto"
+            }}>Finished</button>
+      </div>
+      </Link>
+      
+       
       <Footer />
     </AnimationRevealPage>
   );
